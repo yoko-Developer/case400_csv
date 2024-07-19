@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace case400_csv
@@ -18,37 +19,46 @@ namespace case400_csv
             InitializeComponent();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private async void button1_Click_1(object sender, EventArgs e)
         {
+            var filePath = @"C:\Users\y-morioka\Documents\FI_JRK_0004.csv";
             try
             {
-                var filePath = @"C:\Users\y-morioka\Documents\FI_JRK_0004.csv";
-                var config = new CsvConfiguration(CultureInfo.InvariantCulture)
-                {
-                    Encoding = Encoding.GetEncoding("Shift_JIS"),
-                    HeaderValidated = null,
-                    MissingFieldFound = null
-                };
+                var records = await ReadCsvFileAsync(filePath);
+                DisplayRecords(records);
 
-                using (var reader = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS")))
-                using (var csv = new CsvReader(reader, config))
-                {
-                    var records = csv.GetRecords<CsvRecord>().ToList();
-
-                    // デバッグ出力用
-                    foreach (var record in records)
-                    {
-                        Console.WriteLine($"Record Number: {record.RecordNumber}, Individual Number: {record.IndividualNumber}");
-                    }
-
-                    dataGridView1.DataSource = records;
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("エラーが発生しました:" + ex.Message);
+                MessageBox.Show($"エラーが発生しました: {ex.Message}");
             }
         }
+
+        private async Task<List<CsvRecord>> ReadCsvFileAsync(String filePath)
+        {
+            var config = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Encoding = Encoding.GetEncoding("Shift_JIS"),
+                HeaderValidated = null,
+                MissingFieldFound = null
+            };
+
+            using (var reader = new StreamReader(filePath, Encoding.GetEncoding("Shift_JIS")))
+            using (var csv = new CsvReader(reader, config))
+            {
+                return await Task.Run(() => csv.GetRecords<CsvRecord>().ToList());
+            }
+        }
+
+        private void DisplayRecords(List<CsvRecord> records) {
+            dataGridView1.DataSource = records;
+
+            // デバッグ出力用
+            records.ForEach(record =>
+                Console.WriteLine($"Record Number: {record.RecordNumber}, Individual Number: {record.IndividualNumber}")
+                );
+            }
+        
 
         public class CsvRecord
         {
