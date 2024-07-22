@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace case400_csv
+namespace Case400_csv
 {
     internal static class Program
     {
