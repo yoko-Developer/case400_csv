@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace case400_csv
+namespace Case400_csv
 {
     public partial class Form1 : Form
     {

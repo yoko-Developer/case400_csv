@@ -1,4 +1,4 @@
-﻿namespace case400_csv
+﻿namespace Case400_csv
 {
     partial class Form1
     {
