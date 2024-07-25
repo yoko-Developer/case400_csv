@@ -144,5 +144,9 @@ namespace Case400_csv
             public String ReasonNonParticipant { get; set; }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
