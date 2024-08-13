@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using case400_csv.Forms;
 
 namespace Case400_csv
 {
@@ -14,7 +16,7 @@ namespace Case400_csv
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ConnectForm());
+            Application.Run(new Form1());
         }
     }
 }
