@@ -2,15 +2,9 @@
 {
     partial class Form1
     {
-        /// <summary>
-        /// 必要なデザイナー変数です。
-        /// </summary>
+
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
-        /// <param name="disposing">マネージド リソースを破棄する場合は true を指定し、その他の場合は false を指定します。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,14 +16,13 @@
 
         #region Windows フォーム デザイナーで生成されたコード
 
-        /// <summary>
-        /// デザイナー サポートに必要なメソッドです。このメソッドの内容を
-        /// コード エディターで変更しないでください。
-        /// </summary>
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+
+            // 新しいボタンを追加
+            this.buttonConnectForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,11 +48,25 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Form1
+            // buttonConnectForm
+            // ボタン位置の指定
             // 
+            this.buttonConnectForm.Location = new System.Drawing.Point(200, 79);
+            this.buttonConnectForm.Name = "buttonConnectForm";
+            this.buttonConnectForm.Size = new System.Drawing.Size(150, 31);
+            this.buttonConnectForm.TabIndex = 2;
+            this.buttonConnectForm.Text = "Connect Form";
+
+            this.buttonConnectForm.UseVisualStyleBackColor = true;
+            // 新しいボタン追加
+            this.buttonConnectForm.Click += new System.EventHandler(this.buttonConnectForm_Click);
+
+            // Form1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            // 新しいボタンをフォームに追加
+            this.Controls.Add(this.buttonConnectForm);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -73,6 +80,8 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        // 新しいボタンの定義
+        private System.Windows.Forms.Button buttonConnectForm;
     }
 }
 
